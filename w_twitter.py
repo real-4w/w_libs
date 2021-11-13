@@ -41,6 +41,7 @@ class TwitterNew(TwitterSource):
         self.extras=["surely", "probably", "likely","definately", "absolutely", ""]
         self.verbs=["was","is","looks","seems", "could be", "might be", "should be", "looks like it will be"]
         self.nouns=["cool","exciting","pretty cool","awesome","pretty exicting", "funky", "usefull", "mighty good"]
+        self.infinitives = ["", ", for no apparent reason", ", because I say so"]
         self.random_tweet = "This will overwritten by the methods."
                
     def fetch(self):
@@ -62,6 +63,6 @@ class TwitterNew(TwitterSource):
         Args:
             w_tweet_text (str): This will be added after the random sentence.
         """
-        self.random_tweet = f"{secrets.choice(self.names)} {secrets.choice(self.extras)} {secrets.choice(self.verbs)} {secrets.choice(self.nouns)}: {w_tweet_text}"
+        self.random_tweet = f"{secrets.choice(self.names)} {secrets.choice(self.extras)} {secrets.choice(self.verbs)} {secrets.choice(self.nouns)}{secrets.choice(self.infinitives)}: {w_tweet_text}"
         self.w_tweet(self.random_tweet)
         print(self.random_tweet)
