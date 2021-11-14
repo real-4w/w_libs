@@ -57,7 +57,7 @@ class TwitterNew(TwitterSource):
         """
         w_user_api = self.twitter_api.GetUser(screen_name=w_user)
         print(f"Twitter handle: {w_user_api.screen_name} has tweeted {w_user_api.statuses_count} tweets. {w_user_api.screen_name} is following {w_user_api.friends_count} users and is followed by {w_user_api.followers_count} users.")
-        print(type(w_user_api))
+        #print(type(w_user_api))
         return(w_user_api)
 
     def w_send_random_tweet(self, w_tweet_text: str): 
@@ -77,9 +77,9 @@ class TwitterNew(TwitterSource):
             w_tweet_text (str): This will be tweeted.
         """
         try:
-            self.twitter_api.PostUpdate(f"{w_tweet_txt}")
+            status = self.twitter_api.PostUpdate(f"{w_tweet_txt}")
             print(f"Tweeted: {w_tweet_txt}")
-            #print("{0} just posted: {1}".format(status.user.name, status.text))  
+            print(f"{status.user.name} just posted: {status.text}")
         except UnicodeDecodeError:
             print("Your message could not be encoded.  Perhaps it contains non-ASCII characters? ")
             print("Try explicitly specifying the encoding with the --encoding flag")
