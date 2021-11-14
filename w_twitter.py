@@ -41,7 +41,7 @@ class TwitterNew(TwitterSource):
         self.extras=["surely", "probably", "likely","definately", "absolutely", ""]
         self.verbs=["was","is","looks","seems", "could be", "might be", "should be", "looks like it will be"]
         self.nouns=["cool","exciting","pretty cool","awesome","pretty exicting", "funky", "usefull", "mighty good"]
-        self.infinitives = ["", ", for no apparent reason", ", because I say so"]
+        self.infinitives = ["", ", for no apparent reason", ", because I say so", ", just because", "", "since it is one of thoase days"]
         self.random_tweet = "This will overwritten by the methods."
                
     def fetch(self):
