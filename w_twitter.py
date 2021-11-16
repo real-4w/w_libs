@@ -48,7 +48,7 @@ class TwitterNew(TwitterSource):
         pass
     
     def w_get_tweets(self, w_user: str, w_count: int, w_open: bool):
-        """Gets the last <w_count> tweets from <w_user} and can open any links in there.
+        """Gets the last <w_count> tweets from <w_user> and can open any links in there.
 
         Args:
             w_user (str): Twitter handle as a string
@@ -96,7 +96,7 @@ class TwitterNew(TwitterSource):
         """
         try:
             status = self.twitter_api.PostUpdate(f"{w_tweet_txt}")
-            print(f"Tweeted: {w_tweet_txt}")
+            #print(f"Tweeted: {w_tweet_txt}")
             print(f"{status.user.name} just posted: {status.text}")
         except UnicodeDecodeError:
             print("Your message could not be encoded.  Perhaps it contains non-ASCII characters? ")
