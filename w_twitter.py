@@ -48,11 +48,23 @@ class TwitterNew(TwitterSource):
         pass
     
     def w_get_followers (self, w_user: str, w_count: int ):
+        """Get <w_count> twitter followers from <w_suser>.
+
+        Args:
+            w_user (str): Get the friend from <w_user>
+            w_count (int): Number of friends to get
+        """
         w_g_f = self.twitter_api.GetFollowers(screen_name=w_user, total_count=w_count)
         for follower in w_g_f:
             print (f"Following: {follower.name}, follows {follower.friends_count} and is followed by {follower.followers_count}")
 
     def w_get_friends (self, w_user: str, w_count: int ):
+        """Get <w_count> twitter friends from <w_suser>.
+
+        Args:
+            w_user (str): Get the friend from <w_user>
+            w_count (int): Number of friends to get
+        """
         w_g_f = self.twitter_api.GetFriends(screen_name=w_user, total_count=w_count)
         for friend in w_g_f:
             print (f"Following: {friend.name}, follows {friend.friends_count} and is followed by {friend.followers_count}")
