@@ -1,4 +1,4 @@
-#7/12/2021 - do not develop here, go w_ing_asset_class
+#8/21/2021 - dont develop here 
 class Asset:
     """Super class for assets. Contains <quantity>, <price>, <value> and <asset_cu> per asset.
     
@@ -39,6 +39,24 @@ class Crypto(Asset):
         """Returns a string summary of the crypto asset when print(self) is called."""
         return(f"{self.name:5} : {self.quantity:6.2f} @ {self.price:10,.2f} {self.cur} = {self.value:10,.2f} {self.cur}")
 
+class KiwiSaver(Asset):
+    """Class for Kiwisaver Assets, based on Asset Class.
+
+    Args:
+        quantity (float): From <Asset> Class
+        price (float): From <Asset> Class
+        value (float): From <Asset> Class
+        cur (str): From <Asset> Class
+        name (str): The Kiwisave Fund name
+    """
+    def __init__(self, a_quantity, a_price, a_value: float, a_cur, k_name: str) -> None:
+        super().__init__(a_quantity, a_price, a_value, a_cur)
+        self.name = k_name
+        
+    def __repr__(self) -> str:
+        """Returns a string summary of the shares asset when print(self) is called."""
+        return(f"{self.name:16} : {self.quantity:.6f} @ {self.price:.6f} {self.cur} = {str(self.value):11} {self.cur}")
+
 class Property(Asset):
     """Class for Property Assets, based on Asset Class.
 
@@ -47,8 +65,8 @@ class Property(Asset):
         price (float): From <Asset> Class
         value (float): From <Asset> Class
         cur (str): From <Asset> Class
-        p_address (str)
-        p_description (str)
+        p_address (str): The address of the property
+        p_description (str): : The description of the property
     """
     def __init__(self, a_quantity: float, a_price, a_value: float, a_cur, p_address, p_description: str, p_mortgage: float) -> None:
         super().__init__(a_quantity, a_price, a_value, a_cur)
@@ -60,7 +78,7 @@ class Property(Asset):
         """Returns a string summary of the property asset when print(self) is called."""
         return(f"{self.address:16} : {self.quantity:,d} value @ {self.price:,d} {self.cur} - {self.mortgage:,d} {self.cur} = {self.value:,d} {self.cur}")
 
-class Shares(Asset):
+class Share(Asset):
     """Class for Share Assets, based on Asset Class.
 
     Args:
@@ -68,6 +86,8 @@ class Shares(Asset):
         price (float): From <Asset> Class
         value (float): From <Asset> Class
         cur (str): From <Asset> Class
+        name (str): The share ticker name
+        market (str): The market of listing
     """
     def __init__(self, a_quantity, a_price, a_value: float, a_cur, s_name, s_market: str) -> None:
         super().__init__(a_quantity, a_price, a_value, a_cur)
@@ -86,13 +106,14 @@ class Portfolio():
         w_debug (bool): Toggle's debugging to see what is going on inside the class.
     """
     def __init__(self, w_cur, w_debug : bool) -> None:
-        self.crypto_list, self.property_list, self.share_list = [], [], []
-        self.c_tot_val, self.p_tot_val, self.s_tot_val, self.tot_val = float(0), float(0), float(0), float(0) 
+        self.crypto_list, self.kiwi_list, self.property_list, self.share_list = [], [], [], []
+        self.c_tot_val, self.k_tot_val, self.p_tot_val, self.s_tot_val, self.tot_val = float(0), float(0), float(0), float(0), float(0) 
         self.port_cur = w_cur
         self.p_debug = w_debug
         
     def __repr__(self) -> str:
         """Returns a string summary of the portfolio when print(self) is called."""
+        #needs kiwisaver addition
         return(f"===> Portfolio contains {len(self.share_list)} share assets, {len(self.crypto_list)} crypto assets and {len(self.property_list)} property assets, alltogether valued at: {self.tot_val:,.0f} {self.port_cur}")
         
     def add_crypto_asset(self, c_asset: Crypto) :
@@ -105,6 +126,10 @@ class Portfolio():
         self.crypto_list.append(c_asset)
         print (f"Added crypto asset: {c_asset} to portfolio.")
 
+    def add_kiwisaver_asset(self, k_asset: KiwiSaver):
+        #wip
+        pass
+    
     def add_property_asset(self, p_asset: Property):
         """[summary]
 
@@ -115,7 +140,8 @@ class Portfolio():
         self.property_list.append(p_asset)
         print (f"Added property asset: {p_asset} to portfolio.")
     
-    def add_share_assets(self, s_asset):
+    def add_share_asset(self, s_asset: Share):
+        #wip
         pass
 
     def calc_port_val (self) :
@@ -138,8 +164,10 @@ class Portfolio():
         """
         print(self)
         self.print_crypto()
-        self.print_share()
+        self.print_kiwisaver()
         self.print_property()
+        self.print_share()
+        
   
     def print_crypto(self) -> None:
         """Method to print all crypto assets in Portfolio Class.
@@ -149,13 +177,13 @@ class Portfolio():
         print(f"===> Portfolio contains {len(self.crypto_list)} crypto assets valued at: {self.c_tot_val:,.0f} {self.port_cur}")
         for c_asset in self.crypto_list: print (c_asset)            # uses __repr__ from Crypto class.
     
-    def print_share(self) -> None:
-        """Method to print all crypto assets in Portfolio Class.
+    def print_kiwisaver(self) -> None:
+        """Method to print all kiwisaver assets in Portfolio Class.
         Returns:
             <none> 
         """
-        print(f"===> Portfolio contains {len(self.share_list)} share assets valued at: {self.s_tot_val:,.0f} {self.port_cur}")
-        for s_asset in self.share_list: print (s_asset)             # uses __repr__ from Share class.
+        print(f"===> Portfolio contains {len(self.kiwi_list)} kiwisaver assets valued at: {self.k_tot_val:,.0f} {self.port_cur}")
+        for k_asset in self.kiwi_list: print (k_asset)             # uses __repr__ from Share class.
     
     def print_property(self) -> None:
         """Method to print all crypto assets in Portfolio Class.
@@ -163,5 +191,13 @@ class Portfolio():
             <none> 
         """
         print(f"===> Portfolio contains {len(self.property_list)} property assets valued at: {self.p_tot_val:,.0f} {self.port_cur}")
-        for p_asset in self.property_list: print (p_asset)          # uses __repr__ from Share class.
+        for p_asset in self.property_list: print (p_asset)          # uses __repr__ from Property class.
+
+    def print_share(self) -> None:
+        """Method to print all share assets in Portfolio Class.
+        Returns:
+            <none> 
+        """
+        print(f"===> Portfolio contains {len(self.share_list)} share assets valued at: {self.s_tot_val:,.0f} {self.port_cur}")
+        for s_asset in self.share_list: print (s_asset)             # uses __repr__ from Share class.
 
