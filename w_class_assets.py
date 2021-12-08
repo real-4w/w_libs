@@ -1,4 +1,4 @@
-#8/21/2021 - dont develop here 
+#8/21/2021 - do not develop here, go w_ing_asset_class
 class Asset:
     """Super class for assets. Contains <quantity>, <price>, <value> and <asset_cu> per asset.
     
