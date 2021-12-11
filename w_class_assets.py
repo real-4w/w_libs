@@ -154,7 +154,7 @@ class Portfolio():
         for k_asset in self.kiwi_list:
             self.k_tot_val += k_asset.value
         if self.p_debug : print (f"Updated portfolio with {self.k_tot_val:,.0f} {self.p_cur} to {self.tot_val:,.0f} {self.port_cur}") 
-        self.tot_val += self.s_tot_val
+        self.tot_val += self.k_tot_val
         for p_asset in self.property_list:
             self.p_tot_val += p_asset.value
         if self.p_debug : print (f"Updated portfolio with {self.p_tot_val:,.0f} {self.p_cur} to {self.tot_val:,.0f} {self.port_cur}") 
