@@ -1,4 +1,4 @@
-#11/12/2021 - do not develop here, go w_ing_asset_class
+#19/12/2021 do not develop here, go w_ing_asset_class
 class Asset:
     """Super class for assets. Contains <quantity>, <price>, <value> and <asset_cu> per asset.
     
@@ -15,6 +15,13 @@ class Asset:
         self.price = a_price
         self.value = a_value
         self.cur = a_cur
+
+    def re_price(self, new_price : float):
+        self.price = new_price
+
+    def re_value(self, new_value : float):
+        self.value = new_value
+
  
 class Crypto(Asset):
     """Class for Crypto Assets, based on Asset Class.
@@ -55,7 +62,7 @@ class KiwiSaver(Asset):
         
     def __repr__(self) -> str:
         """Returns a string summary of the shares asset when print(self) is called."""
-        return(f"{self.name:16} : {self.quantity:.6f} @ {self.price:.6f} {self.cur} = {str(self.value):11} {self.cur}")
+        return(f"{self.name:20} : {self.quantity:.0f} @ {self.price:10,.0f} {self.cur} = {self.value:10,.0f} {self.cur}")
 
 class Property(Asset):
     """Class for Property Assets, based on Asset Class.
