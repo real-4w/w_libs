@@ -1,0 +1,39 @@
+---
+debug : False                                                     # will toggle the debug prints
+plot : True                                                       # will toggle the amthplots
+copy_to_file : False                                              # will toggle a copy of the console to log file
+api_key : "8C7LNHUO0MZEPUTC"                                      # insert you alphavatage.com token
+api_key_dev : "4OYY6AT2N9B0WB5X"                                  # dev key to avoid lockout
+to_currency : NZD                                                 # to NZD
+ing_nl : "data/portefeuilleoverzicht_10491907_2021-11-29.csv"     # ING NL file
+kiwi : 'data/189768_Transactions_2010-10-01_2021-12-02.xlsx'      # ANZ KiwiSaver
+crypto:
+  - currency: ALGO
+    quantity: 11.913597
+  - currency: BCH
+    quantity: 1.03221383
+  - currency: BTC
+    quantity: 0.11649199
+  - currency: DOGE
+    quantity: 40.60238675
+  - currency: DOT
+    quantity: 4.14951698
+  - currency: ETH
+    quantity: 1.16660854
+  - currency: PAX
+    quantity: 280.53423823
+  - currency: WBTC
+    quantity: 0.00024433
+  - currency: WDGLD
+    quantity: 0.03208022
+  - currency: XLM
+    quantity: 156.8298854
+  - currency: YFI
+    quantity: 0.00108177
+property:
+  - address: 157B Hobsonville Road, Auckland
+    price: 1430000
+    mortgage: 0
+  - address: 9b Clearwater Cove, Auckland
+    price: 1050000
+    mortgage: 630000
