@@ -1,4 +1,4 @@
-import os, sys, pathlib
+import os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)))  #needed to import libs from project directory
 import w_yaml as w_y
 import unittest
@@ -19,8 +19,13 @@ class test_w_yaml(unittest.TestCase):
         self.assertIn(to_cur, "USD NZD EUR GBP AUD")
 
     def test_crypto(self):
-        pass
-
+        try:
+            cryptos = self.yaml_data['crypto']
+            for crypto in cryptos:
+                print(f"{crypto['currency']}: {float(crypto['quantity'])}")
+        except:
+            self.fail("test_crypto() failed. Please check yaml file for a crypto section.")
+    
     def test_property(self):
         try: 
             properties = self.yaml_data['property']
@@ -29,15 +34,7 @@ class test_w_yaml(unittest.TestCase):
                 mortgage = prop['mortgage']
                 address = prop['address']
         except: 
-            self.fail("test_property failed. Please check yaml file for a property section.")
-
-#https://stackoverflow.com/questions/6181555/pass-a-python-unittest-if-an-exception-isnt-raised
-#def test_does_not_error(self):
-#    try:
-#        code_under_test()
-#    except ThatException:
-#        self.fail("code_under_test raised ThatException")
-
+            self.fail("test_property() failed. Please check yaml file for a property section.")
 
 if __name__ == "__main__":
     unittest.main()
