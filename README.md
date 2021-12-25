@@ -7,3 +7,6 @@ Willem's Python libraries for use in other projects. Do not develop here.
 - w_exchange.py                   # 03-12-2021  https://github.com/real-4w/w_bitcoin
 - w_twitter.py                    # 28-11-2021  https://github.com/real-4w/twitter_bot
 - w_yaml.py                       # 03-12-2021  https://github.com/real-4w/twitter_bot
+
+Unit testt added for
+- test_w_yaml.py                  # 24-12-2021  https://github.com/real-4w/twitter_bot
