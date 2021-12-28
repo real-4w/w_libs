@@ -1,4 +1,5 @@
-#28/12/21 help module to send print output to a file. No seperate project, dev here.
+#28/12/21 help module to send print output to a file. 
+# No seperate project, dev here.
 #help module to send print output to a file
 #https://stackoverflow.com/questions/14906764/how-to-redirect-stdout-to-both-file-and-console-with-scripting
 import sys, os, time, pathlib
