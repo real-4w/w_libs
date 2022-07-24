@@ -1,3 +1,4 @@
+#24/7/2022
 from abc import ABC, abstractmethod
 import twitter, sys, secrets, re, webbrowser
 
@@ -42,7 +43,7 @@ class TwitterNew(TwitterSource):
         self.verbs=["was","is","looks","seems", "could be", "might be", "should be", "looks like it will be"]
         self.nouns=["cool","exciting","pretty cool","awesome","pretty exicting", "funky", "usefull", "mighty good"]
         self.infinitives = ["", ", for no apparent reason", ", because I say so", ", just because", "", " since it is one of those days"]
-        self.random_tweet = "This will overwritten by the methods."
+        self.random_tweet = "This will be overwritten by the methods."
                
     def fetch(self):
         pass
